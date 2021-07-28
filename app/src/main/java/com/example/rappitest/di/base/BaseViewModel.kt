@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import com.example.rappitest.di.component.DaggerViewModelInjector
 import com.example.rappitest.di.component.ViewModelInjector
 import com.example.rappitest.di.module.NetworkModule
-import com.example.rappitest.movies.viewModel.ListPopularAndTopMoviesViewModel
+import com.example.rappitest.movies.viewModel.MostPopularViewModel
+import com.example.rappitest.movies.viewModel.MoviesListViewModel
 
 abstract class BaseViewModel: ViewModel(){
     private val injector: ViewModelInjector = DaggerViewModelInjector
@@ -21,7 +22,8 @@ abstract class BaseViewModel: ViewModel(){
      */
     private fun injectModel() {
         when (this) {
-           is ListPopularAndTopMoviesViewModel -> injector.inject(this)
+            is MoviesListViewModel -> injector.inject(this)
+            is MostPopularViewModel -> injector.inject(this)
         }
     }
 }

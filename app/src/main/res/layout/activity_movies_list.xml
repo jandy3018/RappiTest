@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/medium_blue">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.example.rappitest.movies.viewModel.MoviesListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/pb_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{viewModel.loadingVisibility}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <RelativeLayout
+                android:id="@id/ll_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/blue">
+
+                <TextView
+                    android:id="@+id/tv_title_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textAlignment="center"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/text24sp"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/iv_search"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="@dimen/dimen16dp"
+                    android:src="@drawable/ic_search"
+                    android:visibility="visible" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_edt_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@drawable/edt_background"
+                    android:visibility="gone"
+                    app:hintEnabled="false">
+
+                    <LinearLayout
+                        android:id="@+id/ll_edt_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-15dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <ImageView
+                            android:id="@+id/iv_back_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_back_light_icon" />
+
+                        <EditText
+                            android:id="@+id/edt_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="8"
+                            android:background="@color/transparent"
+                            android:digits="áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789 /"
+                            android:hint="Name movie"
+                            android:inputType="textPassword|textMultiLine|text|textVisiblePassword|textNoSuggestions"
+                            android:maxLength="50"
+                            android:textColorHint="@color/dorian_blue"
+                            android:textSize="@dimen/text14sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_delete_text_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_microphone" />
+                    </LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_top_rated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_toolbar"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_no_found"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dimen16dp"
+                    android:gravity="center"
+                    android:text="@string/no_found_search"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text14sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_header_top_rated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/medium_blue"
+                    android:padding="@dimen/dimen4dp"
+                    android:text="@string/header_top_rated"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/text16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_top_rated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    adapter="@{viewModel.movieTopRatedAdapter}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll_top_rated"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_header_most_popular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/medium_blue"
+                    android:padding="@dimen/dimen4dp"
+                    android:text="@string/header_most_popular"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/text16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_most_popular"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    adapter="@{viewModel.movieMostPopularAdapter}" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="header_top_rated">Top Rated</string>
+    <string name="header_most_popular">Most popular</string>
+    <string name="request_connection_error_empty_bd">No internet connection (no data)</string>
+    <string name="request_connection_error">No internet connection</string>
+    <string name="retry">Reintentar</string>
+    <string name="title_toolbar_offline">MOVIES (OFFLINE)</string>
+    <string name="error_voice_recognition">Your device does not support voice recognition</string>
+    <string name="no_found_search">No results found</string>
+
 </resources>

@@ -12,7 +12,7 @@ class ResponseListMovies {
 
     @SerializedName("results")
     @Expose
-    var results: List<MovieObject>? = null
+    var results: List<ClsMovie>? = null
 
     @SerializedName("total_pages")
     @Expose
@@ -26,7 +26,7 @@ class ResponseListMovies {
         return this
     }
 
-    fun withResults(results: List<MovieObject>?): ResponseListMovies {
+    fun withResults(results: List<ClsMovie>?): ResponseListMovies {
         this.results = results
         return this
     }

@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Entity
-open class MovieObject {
+open class ClsMovie {
     @SerializedName("adult")
     @Expose
     var isAdult = false
@@ -61,72 +61,72 @@ open class MovieObject {
 
     var idTable: Long = 0
 
-    fun withAdult(adult: Boolean): MovieObject {
+    fun withAdult(adult: Boolean): ClsMovie {
         isAdult = adult
         return this
     }
 
-    fun withBackdropPath(backdropPath: String?): MovieObject {
+    fun withBackdropPath(backdropPath: String?): ClsMovie {
         this.backdropPath = backdropPath
         return this
     }
 
-    fun withId(id: Long): MovieObject {
+    fun withId(id: Long): ClsMovie {
         this.id = id
         return this
     }
 
-    fun withOriginalLanguage(originalLanguage: String?): MovieObject {
+    fun withOriginalLanguage(originalLanguage: String?): ClsMovie {
         this.originalLanguage = originalLanguage
         return this
     }
 
-    fun withOriginalTitle(originalTitle: String?): MovieObject {
+    fun withOriginalTitle(originalTitle: String?): ClsMovie {
         this.originalTitle = originalTitle
         return this
     }
 
-    fun withOverview(overview: String?): MovieObject {
+    fun withOverview(overview: String?): ClsMovie {
         this.overview = overview
         return this
     }
 
-    fun withPopularity(popularity: Double): MovieObject {
+    fun withPopularity(popularity: Double): ClsMovie {
         this.popularity = popularity
         return this
     }
 
-    fun withPosterPath(posterPath: String?): MovieObject {
+    fun withPosterPath(posterPath: String?): ClsMovie {
         this.posterPath = posterPath
         return this
     }
 
-    fun withReleaseDate(releaseDate: String?): MovieObject {
+    fun withReleaseDate(releaseDate: String?): ClsMovie {
         this.releaseDate = releaseDate
         return this
     }
 
-    fun withTitle(title: String?): MovieObject {
+    fun withTitle(title: String?): ClsMovie {
         this.title = title
         return this
     }
 
-    fun withVideo(video: Boolean): MovieObject {
+    fun withVideo(video: Boolean): ClsMovie {
         isVideo = video
         return this
     }
 
-    fun withVoteAverage(voteAverage: Double): MovieObject {
+    fun withVoteAverage(voteAverage: Double): ClsMovie {
         this.voteAverage = voteAverage
         return this
     }
 
-    fun withVoteCount(voteCount: Long): MovieObject {
+    fun withVoteCount(voteCount: Long): ClsMovie {
         this.voteCount = voteCount
         return this
     }
 
-    fun withIdTable(idTable: Long): MovieObject {
+    fun withIdTable(idTable: Long): ClsMovie {
         this.idTable = idTable
         return this
     }

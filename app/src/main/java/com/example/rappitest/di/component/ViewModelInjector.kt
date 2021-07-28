@@ -1,7 +1,9 @@
 package com.example.rappitest.di.component
 
 import com.example.rappitest.di.module.NetworkModule
-import com.example.rappitest.movies.viewModel.ListPopularAndTopMoviesViewModel
+import com.example.rappitest.movies.data.repository.RepositoryMovies
+import com.example.rappitest.movies.viewModel.MostPopularViewModel
+import com.example.rappitest.movies.viewModel.MoviesListViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -9,7 +11,11 @@ import javax.inject.Singleton
 @Component(modules = [(NetworkModule::class)])
 interface ViewModelInjector {
 
-    fun inject(listPopularAndTopMoviesViewModel: ListPopularAndTopMoviesViewModel)
+    fun inject(moviesListViewModel: MoviesListViewModel)
+
+    fun inject(mostPopularViewModel: MostPopularViewModel)
+
+    fun inject(repo: RepositoryMovies)
 
     @Component.Builder
     interface Builder {

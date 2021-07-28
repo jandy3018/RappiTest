@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.rappitest.movies.viewModel.MostPopularViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_item_most_popular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_poster"
+            android:layout_width="45dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="@dimen/dimen16dp"
+            android:layout_marginTop="@dimen/dimen8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border_outline"
+            android:contentDescription="Image"
+            android:padding="2dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen16dp"
+            android:layout_marginEnd="32dp"
+            android:maxLines="2"
+            app:mutableTextSpanned="@{viewModel.getTitle()}"
+            android:textSize="@dimen/text16sp"
+            app:layout_constraintEnd_toEndOf="@+id/rating"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_poster"
+            app:layout_constraintTop_toTopOf="@+id/iv_poster"
+            tools:text="Total" />
+
+        <TextView
+            android:id="@+id/releaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.getReleaseDate()}"
+            android:textSize="@dimen/text14sp"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="April 12, 2019" />
+
+        <com.example.rappitest.movies.custom.RatingView
+            android:id="@+id/rating"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/dimen16dp"
+            android:layout_marginEnd="@dimen/dimen8dp"
+            android:layout_marginBottom="@dimen/dimen16dp"
+            app:angle_start="180"
+            app:current_percent="50"
+            app:fillArcColor="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_poster"
+            app:parentArcColor="@color/yellow_transparent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/medium_blue"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
