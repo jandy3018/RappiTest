@@ -3,7 +3,6 @@ package com.example.rappitest.movies.viewModel
 import android.content.Intent
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
