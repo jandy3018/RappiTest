@@ -12,8 +12,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.rappitest.R
 import com.example.rappitest.movies.model.ClsMovie
+import com.example.rappitest.movies.view.DetailMovieActivity
 import com.example.rappitest.movies.viewModel.MoviesListViewModel
-import java.util.*
+import com.example.rappitest.utils.Utils
 import kotlin.collections.ArrayList
 
 class MoviesTopRatedAdapter(var viewModel: MoviesListViewModel) :
@@ -31,11 +32,20 @@ class MoviesTopRatedAdapter(var viewModel: MoviesListViewModel) :
         Glide.with(holder.iv_poster.context)
             .load("https://image.tmdb.org/t/p/w500/" + objectsFiltered[position].posterPath)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
-            //.placeholder(R.drawable.poster_default)
             .into(holder.iv_poster)
 
         holder.iv_poster.setOnClickListener {
+            Utils.singleClickListener(holder.iv_poster.context) {
+                val intent =
+                    Intent(holder.iv_poster.context, DetailMovieActivity::class.java)
+                intent.putExtra("id_movie", objectsFiltered[position].id)
+                intent.putExtra("poster_path", objectsFiltered[position].posterPath)
+                intent.putExtra("title", objectsFiltered[position].title)
+                intent.putExtra("release_date", objectsFiltered[position].releaseDate)
+                intent.putExtra("overview", objectsFiltered[position].overview)
 
+                (holder.iv_poster.context as FragmentActivity).startActivity(intent)
+            }
         }
     }
 

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/darkblue_transparency">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.rappitest.movies.viewModel.MovieDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{viewModel.loadingVisibility}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/ic_back_light_icon" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_poster"
+                android:layout_width="120dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/dimen8dp"
+                android:background="@drawable/border_outline"
+                android:padding="3dp"
+                android:scaleType="fitXY"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen8dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text16sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_poster"
+                app:layout_constraintTop_toTopOf="@+id/iv_poster"
+                android:text="@{viewModel.title}"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/tv_release_runtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen8dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text14sp"
+                android:text="@{viewModel.releaseDate}"
+                tools:text="April 12, 2019" />
+
+            <TextView
+                android:id="@+id/tv_play_trailer_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen8dp"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/text14sp"
+                android:textStyle="bold"
+                android:onClick="@{viewModel}"
+                android:drawableRight="@drawable/ic_play_movie"
+                android:visibility="@{viewModel.showPlayTrailer}"
+                android:text="Play Trailer " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen16dp"
+                android:text="Overview"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_overview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/dimen16dp"
+                android:layout_marginRight="@dimen/dimen16dp"
+                android:layout_marginBottom="@dimen/dimen16dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text14sp"
+                android:text="@{viewModel.overview}"
+                tools:text="Test" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_genre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dimen16dp"
+                android:layout_marginRight="@dimen/dimen16dp"
+                android:layout_marginBottom="@dimen/dimen16dp"
+                app:adapter="@{viewModel.getGenreAdapter()}" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

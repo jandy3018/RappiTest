@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.rappitest.movies.viewModel.MovieDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen8dp">
+
+        <TextView
+            android:id="@+id/tv_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_style"
+            android:gravity="center"
+            android:padding="@dimen/dimen8dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text14sp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{viewModel.genre}"
+            tools:text="button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

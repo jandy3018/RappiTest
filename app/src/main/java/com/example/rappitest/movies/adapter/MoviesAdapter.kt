@@ -16,6 +16,7 @@ import com.example.rappitest.R
 import com.example.rappitest.databinding.ItemMostPopularBinding
 import com.example.rappitest.movies.custom.RatingView
 import com.example.rappitest.movies.model.ClsMovie
+import com.example.rappitest.movies.view.DetailMovieActivity
 import com.example.rappitest.movies.viewModel.MostPopularViewModel
 import com.example.rappitest.movies.viewModel.MoviesListViewModel
 import com.example.rappitest.utils.Utils
@@ -55,7 +56,15 @@ class MoviesAdapter(var viewModel: MoviesListViewModel) :
 
         holder.cl_item_most_popular.setOnClickListener {
             Utils.singleClickListener(holder.iv_poster.context) {
+                val intent =
+                    Intent(holder.iv_poster.context, DetailMovieActivity::class.java)
+                intent.putExtra("id_movie", objectsFiltered[position].id)
+                intent.putExtra("poster_path", objectsFiltered[position].posterPath)
+                intent.putExtra("title", objectsFiltered[position].title)
+                intent.putExtra("release_date", objectsFiltered[position].releaseDate)
+                intent.putExtra("overview", objectsFiltered[position].overview)
 
+                (holder.iv_poster.context as FragmentActivity).startActivity(intent)
             }
         }
     }

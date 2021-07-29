@@ -5,6 +5,7 @@ import com.example.rappitest.di.component.DaggerViewModelInjector
 import com.example.rappitest.di.component.ViewModelInjector
 import com.example.rappitest.di.module.NetworkModule
 import com.example.rappitest.movies.viewModel.MostPopularViewModel
+import com.example.rappitest.movies.viewModel.MovieDetailViewModel
 import com.example.rappitest.movies.viewModel.MoviesListViewModel
 
 abstract class BaseViewModel: ViewModel(){
@@ -24,6 +25,7 @@ abstract class BaseViewModel: ViewModel(){
         when (this) {
             is MoviesListViewModel -> injector.inject(this)
             is MostPopularViewModel -> injector.inject(this)
+            is MovieDetailViewModel -> injector.inject(this)
         }
     }
 }
